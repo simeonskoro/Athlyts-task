@@ -9,7 +9,7 @@ export type IntensityLevel = 1 | 2 | 3
 export type RecoveryDescription = typeof RECOVERY_DESCRIPTIONS[number]
 
 interface SessionFields {
-  id: number
+  id: string
   date: string // yyyy-MM-dd
   startTime: string // hh:mm
   endTime: string // hh:mm
@@ -58,7 +58,7 @@ export function mockApiCallToFetchSessions(): Promise<Session[]> {
           // about double the number of training than recovery sessions
           // create recovery session
           sessions.push({
-            id: sessions.length,
+            id: `${sessions.length}`,
             type: 'recovery',
             date: isoDate,
             startTime: isoStartTime,
@@ -71,7 +71,7 @@ export function mockApiCallToFetchSessions(): Promise<Session[]> {
           // create training session
           const intensityLevel = randomInt(1, 3) as IntensityLevel
           sessions.push({
-            id: sessions.length,
+            id: `${sessions.length}`,
             type: 'training',
             date: isoDate,
             startTime: isoStartTime,
